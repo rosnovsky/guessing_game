@@ -43,3 +43,14 @@ fn main() {
 fn guess_counter_increment(i: &i32) -> i32 {
     return i + 1;
 }
+
+#[cfg(test)]
+mod useless_guess_test {
+
+    #[test]
+    fn useless_guess_works() {
+        let secret_number = 50;
+        let guessed_number = 50;
+        assert!(&guessed_number == &secret_number);
+    }
+}

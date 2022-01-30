@@ -2,6 +2,12 @@
 name = "guessing_game"
 version = "0.1.0"
 edition = "2021"
+authors=["Art Rosnovsky"]
+
+[[bin]]
+name = "guessing_game"
+test = true
+bench = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

@@ -1,6 +1,8 @@
+#![warn(clippy::all, clippy::pedantic)]
+
 use rand::Rng;
 use std::cmp::Ordering;
-use std::io;
+use std::io::stdin;
 
 fn main() {
     println!("Guess the number!");
@@ -8,14 +10,12 @@ fn main() {
     let mut guess_counter: i32 = 0;
 
     loop {
-        guess_counter = guess_counter_increment(&guess_counter);
+        guess_counter = guess_counter_increment(guess_counter);
         println!("Please input your guess #{:#?}.", guess_counter);
 
         let mut guess = String::new();
 
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Something went wrong");
+        stdin().read_line(&mut guess).expect("Something went wrong");
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
@@ -40,8 +40,8 @@ fn main() {
     }
 }
 
-fn guess_counter_increment(i: &i32) -> i32 {
-    return i + 1;
+fn guess_counter_increment(i: i32) -> i32 {
+    i + 1
 }
 
 #[cfg(test)]
@@ -51,6 +51,6 @@ mod useless_guess_test {
     fn useless_guess_works() {
         let secret_number = 50;
         let guessed_number = 50;
-        assert!(&guessed_number == &secret_number);
+        assert!(guessed_number == secret_number);
     }
 }
